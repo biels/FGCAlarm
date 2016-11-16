@@ -43,5 +43,6 @@ dependencies {
     //compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
 
     compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:recyclerview-v7:24.0.+'
     testCompile 'junit:junit:4.12'
 }
