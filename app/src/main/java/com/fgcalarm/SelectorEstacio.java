@@ -53,7 +53,7 @@ public class SelectorEstacio extends AppCompatActivity {
         //El adapter se encarga de  adaptar un objeto definido en el c�digo a una vista en xml
         //seg�n la estructura definida.
         //Asignamos nuestro custom Adapter
-        mRecyclerView.setAdapter(new CustomAdapterSelectorEstacions(this.getApplicationContext()));
+        mRecyclerView.setAdapter(new CustomAdapterSelector(this.getApplicationContext()));
     }
 
     /*private class OnItemClickListener extends RecyclerItemClickListener.SimpleOnItemClickListener {
