@@ -1,12 +1,41 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+        android:background="#fff"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:background="#fff"
+            android:src="@drawable/fgcalarminversbann"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:background="#fff">
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:textSize="25dp"
+            android:textColor="#e67a2b"
+            android:background="#fff"
+            android:text="Selecciona la línia de destí :"
+            android:textAlignment="center"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="67"
         android:scrollbars="vertical"
         android:background="#ffffff"
         android:id="@+id/mRecyclerView" android:layout_gravity="center_horizontal|top"
         />
+    </LinearLayout>
 </RelativeLayout>
