@@ -104,7 +104,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s8));
                 break;
         }
-        //adapterViewholder.name.setText(linies.get(position).getName());
+        adapterViewholder.name.setText(linies.get(position).getName());
 
     }
 
@@ -126,7 +126,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
             final int x = itemView.getVerticalScrollbarPosition();
             this.v = itemView;
             this.icon = (ImageView) itemView.findViewById(R.id.icon);
-            //this.name = (TextView) itemView.findViewById(R.id.name);
+            this.name = (TextView) itemView.findViewById(R.id.name);
             this.icon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
