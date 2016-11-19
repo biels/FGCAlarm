@@ -27,6 +27,7 @@
             android:textColor="#e67a2b"
             android:background="#fff"
             android:text="Selecciona la línia de destí :"
+            android:fontFamily="sans-serif-condensed"
             android:textAlignment="center"/>
 
     <android.support.v7.widget.RecyclerView
