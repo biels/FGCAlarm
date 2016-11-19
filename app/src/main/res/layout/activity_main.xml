@@ -35,7 +35,8 @@
         android:layout_weight="67"
         android:scrollbars="vertical"
         android:background="#ffffff"
-        android:id="@+id/mRecyclerView" android:layout_gravity="center_horizontal|top"
+        android:id="@+id/mRecyclerView"
+        android:layout_gravity="center_horizontal|top"
         />
     </LinearLayout>
 </RelativeLayout>

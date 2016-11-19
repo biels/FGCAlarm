@@ -21,6 +21,7 @@
             android:background="#ffffff"
             android:textColor="#e67a2b"
             android:textSize="15dp"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:gravity="center"/>
     </LinearLayout>
 </LinearLayout>
