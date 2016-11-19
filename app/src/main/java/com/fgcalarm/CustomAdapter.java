@@ -45,17 +45,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
         estacions.add(new Estacio("Test"));
 
         linies = new ArrayList<>();
-        linies.add(new Linia(0,"CA7",estacions));
-        linies.add(new Linia(1,"R5",estacions));
-        linies.add(new Linia(2,"R50",estacions));
-        linies.add(new Linia(3,"R60",estacions));
-        linies.add(new Linia(4,"S1",estacions));
-        linies.add(new Linia(5,"S2",estacions));
-        linies.add(new Linia(6,"S33",estacions));
-        linies.add(new Linia(7,"S4",estacions));
-        linies.add(new Linia(8,"S5",estacions));
-        linies.add(new Linia(9,"S55",estacions));
-        linies.add(new Linia(10,"S8",estacions));
+        linies.add(new Linia(0,"Plaça Catalunya - Terrassa Nacions Unides",estacions));
+        linies.add(new Linia(1,"Plaça Catalunya - Sabadell Rambla",estacions));
+        linies.add(new Linia(2,"Plaça Catalunya - Rubí",estacions));
+        linies.add(new Linia(3,"Plaça Catalunya - Universitat Autònoma",estacions));
+        linies.add(new Linia(4,"Plaça Espanya - Can Ros",estacions));
+        linies.add(new Linia(5,"Plaça Espanya - Olesa de Montserrat",estacions));
+        linies.add(new Linia(6,"Plaça Espanya - Martorell Enllaç",estacions));
+        linies.add(new Linia(7,"Plaça Espanya - Manresa",estacions));
+        linies.add(new Linia(8,"Plaça Espanya - Manresa",estacions));
+        linies.add(new Linia(9,"Plaça Espanya - Igualada",estacions));
+        linies.add(new Linia(10,"Plaça Espanya - Igualada",estacions));
+        linies.add(new Linia(11, "Lleida Pirineus - La Pobla de Segur",estacions));
     }
 
 
@@ -71,38 +72,41 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
         int iconLayout = linies.get(position).getIcon();
         switch (iconLayout){
             case 0:
-                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.ca7));
-                break;
-            case 1:
-                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r50));
-                break;
-            case 2:
-                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r6));
-                break;
-            case 3:
-                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r60));
-                break;
-            case 4:
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s1));
                 break;
-            case 5:
+            case 1:
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s2));
                 break;
-            case 6:
-                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s33));
-                break;
-            case 7:
-                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s4));
-                break;
-            case 8:
+            case 2:
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s5));
                 break;
-            case 9:
+            case 3:
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s55));
                 break;
-            case 10:
+            case 4:
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s33));
+                break;
+            case 5:
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s4));
+                break;
+            case 6:
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s8));
                 break;
+            case 7:
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r5));
+                break;
+            case 8:
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r50));
+                break;
+            case 9:
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r6));
+                break;
+            case 10:
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r60));
+                break;
+            case 11:
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.ca7));
+
         }
         adapterViewholder.name.setText(linies.get(position).getName());
 
