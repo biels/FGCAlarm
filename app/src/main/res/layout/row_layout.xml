@@ -22,6 +22,8 @@
             android:textColor="#e67a2b"
             android:textSize="15dp"
             android:textAlignment="center"
+            android:textAllCaps="true"
+            android:fontFamily="sans-serif-smallcaps"
             android:gravity="center"/>
     </LinearLayout>
 </LinearLayout>
