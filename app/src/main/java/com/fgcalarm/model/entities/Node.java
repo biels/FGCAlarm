@@ -1,4 +1,4 @@
-package com.fgcalarm.apiclient.model;
+package com.fgcalarm.model.entities;
 
 /**
  * Created by Biel on 14/11/2016.

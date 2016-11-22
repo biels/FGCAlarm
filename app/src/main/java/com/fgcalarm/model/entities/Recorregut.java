@@ -1,18 +1,21 @@
-package com.fgcalarm.apiclient.model;
+package com.fgcalarm.model.entities;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Biel on 14/11/2016.
  */
-
-public class NodeWaypoint {
+//TODO Turn into JPA entity to store route while on the train
+public class Recorregut {
     int id;
     Date tempsinici;
+    List<NodeWaypoint> nodes;
 
-    public NodeWaypoint(int id, Date tempsinici) {
+    public Recorregut(int id, Date tempsinici, List<NodeWaypoint> nodes) {
         this.id = id;
         this.tempsinici = tempsinici;
+        this.nodes = nodes;
     }
 
     public int getId() {
@@ -29,5 +32,13 @@ public class NodeWaypoint {
 
     public void setTempsinici(Date tempsinici) {
         this.tempsinici = tempsinici;
+    }
+
+    public List<NodeWaypoint> getNodes() {
+        return nodes;
+    }
+
+    public void setNodes(List<NodeWaypoint> nodes) {
+        this.nodes = nodes;
     }
 }

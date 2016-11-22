@@ -1,6 +1,6 @@
-package com.fgcalarm.apiclient;
+package com.fgcalarm.model.apiclient;
 
-import com.fgcalarm.apiclient.model.Circulacio;
+import com.fgcalarm.model.entities.Circulacio;
 
 import java.util.Date;
 import java.util.List;
