@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_s33_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#fff"
+    tools:context="local.fgc.fgclocal.s33">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:src="@drawable/fgcalarminversbann"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:textColor="#e67a2b"
+            android:text="Seleccioni a la parada que es dirigeix :"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="70"
+            android:fadeScrollbars="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="15"
+                android:orientation="vertical">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Barcelona Plaça Espanya"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Magòria La Campana"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Ildefons Cerdà"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Europa | Fira"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Gornal"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Sant Josep"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="L'Hospitalet Av.Carrilet"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Almeda"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Cornellà Riera"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Sant Boi"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Molí Nou Ciutat Cooperativa"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Colònia Güell"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Santa Coloma de Cervelló"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Sant Vicenç dels Horts"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Can Ros"
+                    android:textSize="15dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#e67a2b"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

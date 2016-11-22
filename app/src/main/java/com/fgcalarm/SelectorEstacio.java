@@ -1,35 +1,28 @@
 package com.fgcalarm;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
 
 
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
 
-import java.util.Arrays;
-
-
-public class MainActivity extends ActionBarActivity {
+public class SelectorEstacio extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("linia");
+            //The key argument here must match that used in the other activity
+        }
+
+        setContentView(R.layout.activity_selector);
 
         /*LoginDataBaseAdapter loginDataBaseAdapter;
         loginDataBaseAdapter = new LoginDataBaseAdapter(this);
@@ -60,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
         //El adapter se encarga de  adaptar un objeto definido en el c�digo a una vista en xml
         //seg�n la estructura definida.
         //Asignamos nuestro custom Adapter
-        mRecyclerView.setAdapter(new CustomAdapter(this.getApplicationContext()));
+        mRecyclerView.setAdapter(new CustomAdapterSelector(this.getApplicationContext()));
     }
 
     /*private class OnItemClickListener extends RecyclerItemClickListener.SimpleOnItemClickListener {
