@@ -15,4 +15,12 @@ public class Circulation extends Entity {
     public Circulation(List<Date> timetable) {
         this.timetable = timetable;
     }
+
+    public List<Date> getTimetable() {
+        return timetable;
+    }
+
+    public void setTimetable(List<Date> timetable) {
+        this.timetable = timetable;
+    }
 }
