@@ -1,5 +1,6 @@
 package com.fgcalarm.model.persistence.repositories.impl;
 
+import com.fgcalarm.exceptions.NotImplementedException;
 import com.fgcalarm.model.entities.Line;
 import com.fgcalarm.model.persistence.repositories.LineRepository;
 
@@ -8,6 +9,10 @@ import com.fgcalarm.model.persistence.repositories.LineRepository;
  */
 
 public class LineRepositoryImpl implements LineRepository {
+    public LineRepositoryImpl() {
+        throw new NotImplementedException();
+    }
+
     @Override
     public <S extends Line> S save(S entity) {
         return null;
