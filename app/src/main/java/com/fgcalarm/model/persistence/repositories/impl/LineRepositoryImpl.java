@@ -10,7 +10,7 @@ import com.fgcalarm.model.persistence.repositories.LineRepository;
 
 public class LineRepositoryImpl implements LineRepository {
     public LineRepositoryImpl() {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     @Override
