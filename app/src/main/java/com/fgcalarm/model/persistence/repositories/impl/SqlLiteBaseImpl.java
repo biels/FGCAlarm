@@ -8,5 +8,5 @@ import android.database.sqlite.SQLiteDatabase;
 
 public abstract class SqlLiteBaseImpl {
     // Gets the data repository in write mode
-    SQLiteDatabase db = mDbHelper.getWritableDatabase();
+    //SQLiteDatabase db = mDbHelper.getWritableDatabase();
 }

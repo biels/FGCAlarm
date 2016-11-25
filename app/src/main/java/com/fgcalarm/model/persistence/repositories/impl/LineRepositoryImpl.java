@@ -4,6 +4,8 @@ import com.fgcalarm.exceptions.NotImplementedException;
 import com.fgcalarm.model.entities.Line;
 import com.fgcalarm.model.persistence.repositories.LineRepository;
 
+import java.util.Collection;
+
 /**
  * Created by Biel on 24/11/2016.
  */
@@ -24,7 +26,7 @@ public class LineRepositoryImpl implements LineRepository {
     }
 
     @Override
-    public Iterable<Line> findAll() {
+    public Collection<Line> findAll() {
         return null;
     }
 
