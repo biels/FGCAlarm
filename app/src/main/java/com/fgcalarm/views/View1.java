@@ -1,4 +1,4 @@
-package com.fgcalarm.view;
+package com.fgcalarm.views;
 
 /**
  * Created by Biel on 22/11/2016.
