@@ -4,42 +4,26 @@ import android.graphics.Color;
 
 import com.fgcalarm.model.entities.Line;
 import com.fgcalarm.model.entities.Station;
-import com.fgcalarm.model.persistence.RepositoryManager;
+import com.fgcalarm.model.entities.base.Entity;
 import com.fgcalarm.model.persistence.repositories.LineRepository;
-
-import org.junit.Before;
-import org.junit.Test;
+import com.fgcalarm.model.persistence.repositories.types.Repository;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.fail;
+import java.util.Random;
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ * Created by Biel on 26/11/2016.
  */
-public class LineRepositoryTest {
-    LineRepository lineRepository;
-    @Before
-    public void setUp() throws Exception {
-        lineRepository = RepositoryManager.getLineRepository();
-        if(lineRepository == null)fail();
-    }
-    Line generateLine(){
-        return new Line("", "", new Color(), new ArrayList<Station>());
+
+public class LineRepositoryTest extends CrudRepositoryTest<LineRepository, Line, String> {
+
+    @Override
+    LineRepository getInstanceFromManager() {
+        return null;
     }
 
-    @Test
-    public void save() throws Exception {
-        lineRepository.save(generateLine());
-        assertNotEquals(lineRepository.findAll().size(), 0);
-    }
-
-    @Test
-    public void findByName() throws Exception {
-
+    @Override
+    Line getRandomEntity() {
+        return new Line("L" + getNextSequential(), "tag", new Color(), new ArrayList<Station>());
     }
 }
