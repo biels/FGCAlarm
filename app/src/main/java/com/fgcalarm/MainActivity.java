@@ -28,7 +28,7 @@ import java.util.Arrays;
 
 
 public class MainActivity extends ActionBarActivity {
-
+    final static boolean SHOW_INTRO_ONLY_ONCE = false;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayout;
     @Override
@@ -45,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
                 //  Create a new boolean and preference and set it to true
                 boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
                 //  If the activity has never started before...
-                if (isFirstStart) {
+                if (isFirstStart || !SHOW_INTRO_ONLY_ONCE) {
                     //  Launch app intro
                     Intent i = new Intent(MainActivity.this, IntroActivity.class);
                     startActivity(i);

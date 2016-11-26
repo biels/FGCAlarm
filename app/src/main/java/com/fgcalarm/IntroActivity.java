@@ -8,7 +8,7 @@ import android.os.Bundle;
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 
-public class IntroActivity extends AppIntro {
+public class IntroActivity extends AppIntro  {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +20,8 @@ public class IntroActivity extends AppIntro {
 
         // Add your slide fragments here.
         // AppIntro will automatically generate the dots indicator and buttons.
-
+        Fragment instantiate = Slide1Fragment.newInstance("", "");
+        addSlide(instantiate);
         /*
         addSlide(firstFragment);
         addSlide(secondFragment);
@@ -35,9 +36,10 @@ public class IntroActivity extends AppIntro {
 
         // OPTIONAL METHODS
         // Override bar/separator color.
-        addSlide(slideone);
+        //addSlide(Slide1Fragment.newInstance("", ""));
         addSlide(AppIntroFragment.newInstance("Benvinguts","a partir d'ara podrà gaudir del viatge",R.drawable.iconneg,getColor(R.color.colorFGCTar)));
         addSlide(AppIntroFragment.newInstance("SegonaSlide","text2",R.drawable.r50,000000));
+
         setSeparatorColor(Color.parseColor("#ffffff"));
 
         setFadeAnimation();
