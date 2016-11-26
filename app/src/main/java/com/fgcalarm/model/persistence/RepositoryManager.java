@@ -2,8 +2,13 @@ package com.fgcalarm.model.persistence;
 
 import com.fgcalarm.exceptions.NotImplementedException;
 import com.fgcalarm.model.persistence.repositories.CirculationRepository;
+import com.fgcalarm.model.persistence.repositories.JourneyRepository;
 import com.fgcalarm.model.persistence.repositories.LineRepository;
+import com.fgcalarm.model.persistence.repositories.StationRepository;
+import com.fgcalarm.model.persistence.repositories.impl.inmemory.CirculationRepositoryInMemoryImpl;
+import com.fgcalarm.model.persistence.repositories.impl.inmemory.JourneyRepositoryInMemeoryImpl;
 import com.fgcalarm.model.persistence.repositories.impl.inmemory.LineRepositoryInMemoryImpl;
+import com.fgcalarm.model.persistence.repositories.impl.inmemory.StationRepositoryInMemoryImpl;
 import com.fgcalarm.model.persistence.repositories.impl.sqlite.LineRepositorySQLImpl;
 
 
@@ -13,7 +18,10 @@ import com.fgcalarm.model.persistence.repositories.impl.sqlite.LineRepositorySQL
 
 public class RepositoryManager {
     private static CirculationRepository circulationRepository;
+    private static JourneyRepository journeyRepository;
     private static LineRepository lineRepository;
+    private static StationRepository stationRepository;
+
     private static ImplementationType implementationType = ImplementationType.NONE;
     public enum ImplementationType {NONE, IN_MEMORY, SQL_LITE};
 
@@ -23,7 +31,10 @@ public class RepositoryManager {
     public static void attatchImplementation(ImplementationType implementationType){
         switch (implementationType){
             case IN_MEMORY:
+                circulationRepository = new CirculationRepositoryInMemoryImpl();
+                journeyRepository = new JourneyRepositoryInMemeoryImpl();
                 lineRepository = new LineRepositoryInMemoryImpl();
+                stationRepository = new StationRepositoryInMemoryImpl();
                 break;
             case SQL_LITE:
                 lineRepository = new LineRepositorySQLImpl();
@@ -37,12 +48,18 @@ public class RepositoryManager {
     }
 
     public static CirculationRepository getCirculationRepository() {
-        throw new NotImplementedException();
-        //return circulationRepository;
+        return circulationRepository;
+    }
+
+    public static JourneyRepository getJourneyRepository() {
+        return journeyRepository;
     }
 
     public static LineRepository getLineRepository() {
         return lineRepository;
     }
 
+    public static StationRepository getStationRepository() {
+        return stationRepository;
+    }
 }
