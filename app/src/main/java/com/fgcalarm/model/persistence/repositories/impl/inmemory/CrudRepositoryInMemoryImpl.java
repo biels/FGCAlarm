@@ -58,7 +58,7 @@ public abstract class CrudRepositoryInMemoryImpl<T extends Entity> implements Cr
     @Override
     public void delete(T entity) {
         //This will be implemented using ids instead of object references in SQL
-        collection.remove(collection.remove(entity));
+        collection.remove(findOne(entity.getId()));
     }
 
     @Override
