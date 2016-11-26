@@ -13,6 +13,9 @@ public class IntroActivity extends AppIntro {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
+
         // Note here that we DO NOT use setContentView();
 
         // Add your slide fragments here.
