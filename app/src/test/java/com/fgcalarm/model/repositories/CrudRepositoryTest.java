@@ -1,6 +1,7 @@
 package com.fgcalarm.model.repositories;
 
 import com.fgcalarm.model.entities.base.Entity;
+import com.fgcalarm.model.persistence.RepositoryManager;
 import com.fgcalarm.model.persistence.repositories.types.CrudRepository;
 import com.fgcalarm.model.persistence.repositories.types.Repository;
 
@@ -20,11 +21,11 @@ public abstract class CrudRepositoryTest<T extends CrudRepository<E, ID>, E exte
     public void save() throws Exception {
         E e1 = getRandomEntity();
         E saved = repository.save(e1);
-        assertNotSame(e1, saved);
+        if(RepositoryManager.getImplementationType() == RepositoryManager.ImplementationType.SQL_LITE)assertNotSame(e1, saved);
         assertNotNull(saved);
         try {
             repository.save(e1);
-            fail("Saved two items with same primary key without throwing an error");
+            fail("Saved two items with same primary key without throwing an exception");
         } catch (Exception e) {
 
         }
@@ -36,6 +37,13 @@ public abstract class CrudRepositoryTest<T extends CrudRepository<E, ID>, E exte
         E saved = repository.save(e1);
         repository.findOne(saved.getId());
 
+    }
+
+    @Test
+    public void delete() throws Exception {
+        E saved = repository.save(getRandomEntity());
+        repository.delete(saved);
+        assertNull(repository.findOne(saved.getId()));
     }
 
     protected void fillRandomly(int n){

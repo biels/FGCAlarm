@@ -14,14 +14,14 @@ import com.fgcalarm.model.persistence.repositories.impl.sqlite.LineRepositorySQL
 public class RepositoryManager {
     private static CirculationRepository circulationRepository;
     private static LineRepository lineRepository;
-    private static Implementation implementation = Implementation.NONE;
-    public enum Implementation{NONE, IN_MEMORY, SQL_LITE};
+    private static ImplementationType implementationType = ImplementationType.NONE;
+    public enum ImplementationType {NONE, IN_MEMORY, SQL_LITE};
 
     private RepositoryManager() {
-        attatchImplementation(Implementation.IN_MEMORY);
+        attatchImplementation(ImplementationType.IN_MEMORY);
     }
-    public static void attatchImplementation(Implementation implementation){
-        switch (implementation){
+    public static void attatchImplementation(ImplementationType implementationType){
+        switch (implementationType){
             case IN_MEMORY:
                 lineRepository = new LineRepositoryInMemoryImpl();
                 break;
@@ -29,11 +29,11 @@ public class RepositoryManager {
                 lineRepository = new LineRepositorySQLImpl();
                 break;
         }
-        RepositoryManager.implementation = implementation;
+        RepositoryManager.implementationType = implementationType;
     }
 
-    public static Implementation getImplementation() {
-        return implementation;
+    public static ImplementationType getImplementationType() {
+        return implementationType;
     }
 
     public static CirculationRepository getCirculationRepository() {
