@@ -7,5 +7,5 @@ import com.fgcalarm.model.persistence.repositories.JourneyRepository;
  * Created by Biel on 26/11/2016.
  */
 
-public class JourneyRepositoryInMemeoryImpl extends CrudRepositoryInMemoryImpl<Journey, Long> implements JourneyRepository {
+public class JourneyRepositoryInMemeoryImpl extends CrudRepositoryInMemoryImpl<Journey> implements JourneyRepository {
 }

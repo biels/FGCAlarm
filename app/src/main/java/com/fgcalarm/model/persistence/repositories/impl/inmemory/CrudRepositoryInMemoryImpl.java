@@ -11,17 +11,24 @@ import java.util.List;
  * Created by Biel on 26/11/2016.
  */
 
-public abstract class CrudRepositoryInMemoryImpl<T extends Entity<ID>, ID extends Serializable> implements CrudRepository<T, ID> {
+public abstract class CrudRepositoryInMemoryImpl<T extends Entity> implements CrudRepository<T> {
     @SuppressWarnings("WeakerAccess")
     protected List<T> collection;
+    Long lastAutoincremental = 0L;
 
     public CrudRepositoryInMemoryImpl() {
         this.collection = new ArrayList<>();
     }
 
+    private Long getNextAutoIncremental(){
+        return lastAutoincremental++;
+    }
     @Override
     public <S extends T> S save(S entity) {
-        T findResult = findOne(entity.getId());
+        Long id = entity.getId();
+        if(id == null)id = getNextAutoIncremental();
+        entity.setId(id);
+        T findResult = findOne(id);
         if (findResult != null){
             collection.remove(findResult);
         }
@@ -30,9 +37,11 @@ public abstract class CrudRepositoryInMemoryImpl<T extends Entity<ID>, ID extend
     }
 
     @Override
-    public T findOne(ID primaryKey) {
-        for (T e : collection)
-        if (e.getId().equals(primaryKey))return e;
+    public T findOne(Long primaryKey) {
+        for (T e : collection){
+            Long id = e.getId();
+            if (id.equals(primaryKey))return e;
+        }
         return null;
     }
 
@@ -53,7 +62,7 @@ public abstract class CrudRepositoryInMemoryImpl<T extends Entity<ID>, ID extend
     }
 
     @Override
-    public boolean exists(ID primaryKey) {
+    public boolean exists(Long primaryKey) {
         return false;
     }
 }

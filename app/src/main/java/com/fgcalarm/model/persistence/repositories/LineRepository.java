@@ -9,6 +9,6 @@ import java.util.List;
  * Created by Biel on 24/11/2016.
  */
 
-public interface LineRepository extends CrudRepository<Line, String> {
+public interface LineRepository extends CrudRepository<Line> {
     List<Line> findByStation(Long stationId);
 }

@@ -12,17 +12,19 @@ import java.util.List;
  * Created by Biel on 24/11/2016.
  */
 
-public class Station extends Entity<Long> {
+public class Station extends Entity {
     private String name;
     private Location location;
     private List<Line> lines;
 
     //Lazy links
 
-    public Station(@NonNull Long aLong, String name, Location location) {
-        super(aLong);
+
+    public Station(Long id, String name, Location location, List<Line> lines) {
+        super(id);
         this.name = name;
         this.location = location;
+        this.lines = lines;
     }
 
     public String getName() {

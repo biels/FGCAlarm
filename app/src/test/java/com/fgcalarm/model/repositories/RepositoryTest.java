@@ -13,7 +13,7 @@ import static junit.framework.Assert.fail;
 /**
  * Created by Biel on 26/11/2016.
  */
-public abstract class RepositoryTest<T extends Repository<E, ID>, E extends Entity<ID>, ID extends Serializable> {
+public abstract class RepositoryTest<T extends Repository<E>, E extends Entity> {
     T repository;
     int seq = 0;
     @Before

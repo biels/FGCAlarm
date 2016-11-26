@@ -9,6 +9,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
 
 import static junit.framework.Assert.*;
 
@@ -16,7 +18,14 @@ import static junit.framework.Assert.*;
  * Created by Biel on 26/11/2016.
  */
 
-public abstract class CrudRepositoryTest<T extends CrudRepository<E, ID>, E extends Entity<ID>, ID extends Serializable> extends RepositoryTest<T, E, ID> {
+public abstract class CrudRepositoryTest<T extends CrudRepository<E>, E extends Entity> extends RepositoryTest<T, E> {
+    @Override
+    E getRandomEntity() {
+        List<E> all = repository.findAll();
+        Collections.shuffle(all);
+        return all.get(0);
+    }
+
     @Test
     public void save() throws Exception {
         E e1 = getRandomEntity();

@@ -8,19 +8,19 @@ import java.io.Serializable;
  * Created by Biel on 22/11/2016.
  */
 
-public abstract class Entity<ID extends Serializable> {
-    @NonNull
-    private ID id;
+public abstract class Entity {
 
-    public Entity(@NonNull ID id) {
+    private Long id;
+
+    public Entity(Long id) {
         this.id = id;
     }
 
-    public ID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(ID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

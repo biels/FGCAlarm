@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Biel on 26/11/2016.
  */
 
-public class LineRepositoryInMemoryImpl extends CrudRepositoryInMemoryImpl<Line, String> implements LineRepository {
+public class LineRepositoryInMemoryImpl extends CrudRepositoryInMemoryImpl<Line> implements LineRepository {
     @Override
     public List<Line> findByStation(Long stationId) {
         return RepositoryManager.getStationRepository().findOne(stationId).getLines();

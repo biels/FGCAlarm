@@ -9,6 +9,6 @@ import com.fgcalarm.model.persistence.repositories.LineRepository;
  * Created by Biel on 26/11/2016.
  */
 
-public class CirculationRepositoryInMemoryImpl extends CrudRepositoryInMemoryImpl<Circulation, Long> implements CirculationRepository {
+public class CirculationRepositoryInMemoryImpl extends CrudRepositoryInMemoryImpl<Circulation> implements CirculationRepository {
 
 }

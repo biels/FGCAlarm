@@ -2,13 +2,14 @@ package com.fgcalarm.model.provisioning;
 
 import com.fgcalarm.exceptions.NotImplementedException;
 import com.fgcalarm.model.provisioning.provisioners.HardcodedModelProvisioner;
+import com.fgcalarm.model.provisioning.provisioners.SampleHardcodedModelProvisioner;
 
 /**
  * Created by Biel on 26/11/2016.
  */
 
 public class ProvisioningManager {
-    public enum ProvisioningStrategy{HARDCODED};
+    public enum ProvisioningStrategy{HARDCODED, SAMPLE_HARDCODED};
     public static void provisionModel(ProvisioningStrategy strategy){
         getProvisionerInstance(strategy).provision();
     }
@@ -16,6 +17,8 @@ public class ProvisioningManager {
         switch (strategy){
             case HARDCODED:
                 return new HardcodedModelProvisioner();
+            case SAMPLE_HARDCODED:
+                return new SampleHardcodedModelProvisioner();
         }
         throw new NotImplementedException("Strategy " + strategy.name() + " is not registered as an implemented provisioning strategy.");
     }

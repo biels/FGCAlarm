@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Created by Biel on 24/11/2016.
  */
 
-public class Journey extends Entity<Long> {
+public class Journey extends Entity {
     private Station destination;
 
     public Journey(@NonNull Long aLong, Station destination) {

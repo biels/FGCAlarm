@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Biel on 24/11/2016.
  */
 
-public class Circulation extends Entity<Long> {
+public class Circulation extends Entity {
     private List<Date> timetable;
     private Line line;
 

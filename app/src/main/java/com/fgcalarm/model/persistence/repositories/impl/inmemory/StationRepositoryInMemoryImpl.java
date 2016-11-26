@@ -11,9 +11,9 @@ import java.util.List;
  * Created by Biel on 26/11/2016.
  */
 
-public class StationRepositoryInMemoryImpl extends CrudRepositoryInMemoryImpl<Station, Long> implements StationRepository {
+public class StationRepositoryInMemoryImpl extends CrudRepositoryInMemoryImpl<Station> implements StationRepository {
     @Override
-    public List<Station> findByLine(String lineId) {
+    public List<Station> findByLine(Long lineId) {
         List<Station> r = new ArrayList<>();
         for (Station s : findAll()) {
             boolean found = false;
