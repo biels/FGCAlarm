@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import com.fgcalarm.model.entities.Line;
 import com.fgcalarm.model.entities.Station;
+import com.fgcalarm.model.entities.types.Location;
 import com.fgcalarm.model.persistence.RepositoryManager;
 import com.fgcalarm.model.persistence.repositories.LineRepository;
 import com.fgcalarm.model.provisioning.ModelProvisioner;
@@ -16,10 +17,14 @@ import java.util.ArrayList;
 
 public class HardcodedModelProvisioner extends ModelProvisioner {
     @Override
-    void provision() {
+    public void provision() {
+        //Stations
+        Station e1 = stationRepository.save(new Station(0L, "Estació1", new Location(41.345D, 42.443D)));
 
-        //
-        Line l1 = new Line("L1", new Color(), new ArrayList<Station>());
+        //Lines
+        ArrayList<Station> l1Stations = new ArrayList<>();
+        l1Stations.add(e1);
+        Line l1 = new Line("L1", new Color(), l1Stations);
         lineRepository.save(l1);
     }
 }

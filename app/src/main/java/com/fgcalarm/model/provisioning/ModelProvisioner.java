@@ -16,5 +16,5 @@ public abstract class ModelProvisioner {
     protected LineRepository lineRepository = RepositoryManager.getLineRepository();
     protected StationRepository stationRepository = RepositoryManager.getStationRepository();
 
-    abstract void provision();
+    public abstract void provision();
 }
