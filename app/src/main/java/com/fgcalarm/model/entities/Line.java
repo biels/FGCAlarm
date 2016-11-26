@@ -1,6 +1,7 @@
 package com.fgcalarm.model.entities;
 
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 
 import com.fgcalarm.model.entities.base.Entity;
 
@@ -10,17 +11,16 @@ import java.util.List;
  * Created by Biel on 24/11/2016.
  */
 
-public class Line extends Entity {
+public class Line extends Entity<String> {
     private String name;
-    private String tag;
     private Color color;
     private List<Station> stations;
 
-    public Line(String name, String tag, Color color, List<Station> stations) {
-        this.setName(name);
-        this.setTag(tag);
-        this.setColor(color);
-        this.setStations(stations);
+    public Line(@NonNull String id, String name, Color color, List<Station> stations) {
+        super(id);
+        this.name = name;
+        this.color = color;
+        this.stations = stations;
     }
 
     public String getName() {
@@ -29,14 +29,6 @@ public class Line extends Entity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
     }
 
     public Color getColor() {

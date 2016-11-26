@@ -1,5 +1,7 @@
 package com.fgcalarm.model.entities;
 
+import android.support.annotation.NonNull;
+
 import com.fgcalarm.model.entities.base.Entity;
 
 import java.util.Date;
@@ -9,10 +11,11 @@ import java.util.List;
  * Created by Biel on 24/11/2016.
  */
 
-public class Circulation extends Entity {
+public class Circulation extends Entity<Long> {
     private List<Date> timetable;
 
-    public Circulation(List<Date> timetable) {
+    public Circulation(@NonNull Long aLong, List<Date> timetable) {
+        super(aLong);
         this.timetable = timetable;
     }
 
