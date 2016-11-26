@@ -5,6 +5,7 @@ import com.fgcalarm.model.persistence.RepositoryManager;
 import com.fgcalarm.model.persistence.repositories.CirculationRepository;
 import com.fgcalarm.model.persistence.repositories.LineRepository;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -16,9 +17,9 @@ import static org.junit.Assert.fail;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class RepositoryManagerUnitTest {
-    @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    @Before
+    public void setUp() throws Exception {
+        RepositoryManager.attatchImplementation(RepositoryManager.ImplementationType.IN_MEMORY);
     }
 
     @Test
