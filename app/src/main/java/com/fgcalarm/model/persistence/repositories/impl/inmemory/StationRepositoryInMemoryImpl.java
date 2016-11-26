@@ -2,7 +2,6 @@ package com.fgcalarm.model.persistence.repositories.impl.inmemory;
 
 import com.fgcalarm.model.entities.Line;
 import com.fgcalarm.model.entities.Station;
-import com.fgcalarm.model.persistence.repositories.LineRepository;
 import com.fgcalarm.model.persistence.repositories.StationRepository;
 
 import java.util.ArrayList;

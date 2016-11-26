@@ -5,7 +5,7 @@ import com.fgcalarm.model.persistence.repositories.types.CrudRepository;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Biel on 26/11/2016.
@@ -13,7 +13,7 @@ import java.util.Collection;
 
 public abstract class CrudRepositoryInMemoryImpl<T extends Entity<ID>, ID extends Serializable> implements CrudRepository<T, ID> {
     @SuppressWarnings("WeakerAccess")
-    protected Collection<T> collection;
+    protected List<T> collection;
 
     public CrudRepositoryInMemoryImpl() {
         this.collection = new ArrayList<>();
@@ -33,7 +33,7 @@ public abstract class CrudRepositoryInMemoryImpl<T extends Entity<ID>, ID extend
     }
 
     @Override
-    public Collection<T> findAll() {
+    public List<T> findAll() {
         return collection;
     }
 

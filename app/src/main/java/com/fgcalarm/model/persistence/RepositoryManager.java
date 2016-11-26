@@ -37,7 +37,7 @@ public class RepositoryManager {
                 stationRepository = new StationRepositoryInMemoryImpl();
                 break;
             case SQL_LITE:
-                lineRepository = new LineRepositorySQLImpl();
+                //lineRepository = new LineRepositorySQLImpl();
                 break;
         }
         RepositoryManager.implementationType = implementationType;
