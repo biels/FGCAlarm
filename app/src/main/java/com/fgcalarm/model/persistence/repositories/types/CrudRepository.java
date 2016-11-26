@@ -9,7 +9,7 @@ import java.util.Collection;
  * Created by Biel on 24/11/2016.
  */
 
-public interface CrudRepository<T extends Entity, ID extends Serializable> extends Repository {
+public interface CrudRepository<T extends Entity<ID>, ID extends Serializable> extends Repository<T, ID> {
     <S extends T> S save(S entity);
     T findOne(ID primaryKey);
     Collection<T> findAll();
