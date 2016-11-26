@@ -21,6 +21,10 @@ public abstract class CrudRepositoryInMemoryImpl<T extends Entity<ID>, ID extend
 
     @Override
     public <S extends T> S save(S entity) {
+        T findResult = findOne(entity.getId());
+        if (findResult != null){
+            collection.remove(findResult);
+        }
         boolean addded = collection.add(entity);
         return (addded ? entity : null);
     }

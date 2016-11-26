@@ -29,7 +29,7 @@ public class LineRepositoryIndepTest {
         if(lineRepository == null)fail();
     }
     Line generateLine(){
-        return new Line("", "", new Color(), new ArrayList<Station>());
+        return new Line("L1", new Color(), new ArrayList<Station>());
     }
 
     @Test
