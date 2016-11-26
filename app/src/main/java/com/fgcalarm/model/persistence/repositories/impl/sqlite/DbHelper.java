@@ -1,4 +1,4 @@
-package com.fgcalarm.model.persistence.repositories.impl;
+package com.fgcalarm.model.persistence.repositories.impl.sqlite;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

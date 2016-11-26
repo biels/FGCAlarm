@@ -5,6 +5,7 @@ import android.graphics.Color;
 import com.fgcalarm.model.entities.Line;
 import com.fgcalarm.model.entities.Station;
 import com.fgcalarm.model.entities.base.Entity;
+import com.fgcalarm.model.persistence.RepositoryManager;
 import com.fgcalarm.model.persistence.repositories.LineRepository;
 import com.fgcalarm.model.persistence.repositories.types.Repository;
 
@@ -19,7 +20,7 @@ public class LineRepositoryTest extends CrudRepositoryTest<LineRepository, Line,
 
     @Override
     LineRepository getInstanceFromManager() {
-        return null;
+        return RepositoryManager.getLineRepository();
     }
 
     @Override

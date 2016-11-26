@@ -23,4 +23,12 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.fgcalarm", appContext.getPackageName());
     }
+
+    @Test
+    public void test2() throws Exception {
+        Context context = InstrumentationRegistry.getContext();
+
+        context.getApplicationInfo().describeContents();
+        fail();
+    }
 }

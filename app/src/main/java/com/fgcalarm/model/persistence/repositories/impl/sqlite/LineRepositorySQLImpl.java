@@ -1,4 +1,4 @@
-package com.fgcalarm.model.persistence.repositories.impl;
+package com.fgcalarm.model.persistence.repositories.impl.sqlite;
 
 import com.fgcalarm.exceptions.NotImplementedException;
 import com.fgcalarm.model.entities.Line;
@@ -10,10 +10,11 @@ import java.util.Collection;
  * Created by Biel on 24/11/2016.
  */
 
-public class LineRepositoryImpl implements LineRepository {
-    public LineRepositoryImpl() {
+public class LineRepositorySQLImpl implements LineRepository {
+    public LineRepositorySQLImpl() {
         //throw new NotImplementedException();
     }
+
 
     @Override
     public <S extends Line> S save(S entity) {
@@ -21,7 +22,7 @@ public class LineRepositoryImpl implements LineRepository {
     }
 
     @Override
-    public Line findOne(Long primaryKey) {
+    public Line findOne(String primaryKey) {
         return null;
     }
 
@@ -41,7 +42,7 @@ public class LineRepositoryImpl implements LineRepository {
     }
 
     @Override
-    public boolean exists(Long primaryKey) {
+    public boolean exists(String primaryKey) {
         return false;
     }
 }

@@ -22,6 +22,12 @@ public abstract class CrudRepositoryTest<T extends CrudRepository<E, ID>, E exte
         E saved = repository.save(e1);
         assertNotSame(e1, saved);
         assertNotNull(saved);
+        try {
+            repository.save(e1);
+            fail("Saved two items with same primary key without throwing an error");
+        } catch (Exception e) {
+
+        }
     }
 
     @Test
@@ -29,12 +35,7 @@ public abstract class CrudRepositoryTest<T extends CrudRepository<E, ID>, E exte
         E e1 = getRandomEntity();
         E saved = repository.save(e1);
         repository.findOne(saved.getId());
-        try {
-            repository.save(e1);
-            fail("Saved two items with same primary key without throwing an error");
-        } catch (Exception e) {
 
-        }
     }
 
     protected void fillRandomly(int n){
