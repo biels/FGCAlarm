@@ -4,6 +4,9 @@ import android.support.annotation.NonNull;
 
 import com.fgcalarm.model.entities.base.Entity;
 import com.fgcalarm.model.entities.types.Location;
+import com.fgcalarm.model.persistence.RepositoryManager;
+
+import java.util.List;
 
 /**
  * Created by Biel on 24/11/2016.
@@ -12,6 +15,9 @@ import com.fgcalarm.model.entities.types.Location;
 public class Station extends Entity<Long> {
     private String name;
     private Location location;
+    private List<Line> lines;
+
+    //Lazy links
 
     public Station(@NonNull Long aLong, String name, Location location) {
         super(aLong);
@@ -33,5 +39,13 @@ public class Station extends Entity<Long> {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public List<Line> getLines() {
+        return lines;
+    }
+
+    public void setLines(List<Line> lines) {
+        this.lines = lines;
     }
 }

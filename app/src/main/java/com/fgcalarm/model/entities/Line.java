@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 
 import com.fgcalarm.model.entities.base.Entity;
+import com.fgcalarm.model.persistence.RepositoryManager;
 
 import java.util.List;
 
@@ -12,23 +13,15 @@ import java.util.List;
  */
 
 public class Line extends Entity<String> {
-    private String name;
     private Color color;
+
+    //Lazy links
     private List<Station> stations;
 
-    public Line(@NonNull String id, String name, Color color, List<Station> stations) {
-        super(id);
-        this.name = name;
+    public Line(@NonNull String s, Color color, List<Station> stations) {
+        super(s);
         this.color = color;
         this.stations = stations;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Color getColor() {
@@ -40,10 +33,8 @@ public class Line extends Entity<String> {
     }
 
     public List<Station> getStations() {
+        if(stations == null)stations = RepositoryManager.getStationRepository()
+                .findByLine(getId());
         return stations;
-    }
-
-    public void setStations(List<Station> stations) {
-        this.stations = stations;
     }
 }

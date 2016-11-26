@@ -13,10 +13,12 @@ import java.util.List;
 
 public class Circulation extends Entity<Long> {
     private List<Date> timetable;
+    private Line line;
 
-    public Circulation(@NonNull Long aLong, List<Date> timetable) {
+    public Circulation(@NonNull Long aLong, List<Date> timetable, Line line) {
         super(aLong);
         this.timetable = timetable;
+        this.line = line;
     }
 
     public List<Date> getTimetable() {
@@ -25,5 +27,13 @@ public class Circulation extends Entity<Long> {
 
     public void setTimetable(List<Date> timetable) {
         this.timetable = timetable;
+    }
+
+    public Line getLine() {
+        return line;
+    }
+
+    public void setLine(Line line) {
+        this.line = line;
     }
 }
