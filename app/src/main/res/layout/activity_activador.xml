@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="15"
-            android:text="1 hora i 50 minuts"
+            android:text="1 hora i 50 min"
             android:textSize="50dp"
             android:fontFamily="sans-serif-condensed"
             android:textColor="#000"

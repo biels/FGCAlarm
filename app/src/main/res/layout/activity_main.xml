@@ -20,6 +20,7 @@
             android:background="#fff">
         </LinearLayout>
         <TextView
+            android:id="@+id/liniainicial"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="8"

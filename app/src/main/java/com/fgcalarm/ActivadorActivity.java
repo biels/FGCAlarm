@@ -10,6 +10,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Pair;
+import android.widget.TextView;
+
+import com.vstechlab.easyfonts.EasyFonts;
 
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 
@@ -27,7 +30,6 @@ public class ActivadorActivity extends AppCompatActivity {
             //The key argument here must match that used in the other activity
         }
         setContentView(R.layout.activity_activador);
-
         double latitud = read_latitude(estacio);
         double longitud = read_longitude(estacio);
         float radius = 30;

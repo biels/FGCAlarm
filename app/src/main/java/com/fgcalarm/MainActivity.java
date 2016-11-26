@@ -20,6 +20,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
+
+import com.vstechlab.easyfonts.EasyFonts;
 
 import java.util.Arrays;
 

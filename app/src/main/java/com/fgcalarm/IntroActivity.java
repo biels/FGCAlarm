@@ -35,6 +35,7 @@ public class IntroActivity extends AppIntro {
 
         // OPTIONAL METHODS
         // Override bar/separator color.
+        addSlide(slideone);
         addSlide(AppIntroFragment.newInstance("Benvinguts","a partir d'ara podrà gaudir del viatge",R.drawable.iconneg,getColor(R.color.colorFGCTar)));
         addSlide(AppIntroFragment.newInstance("SegonaSlide","text2",R.drawable.r50,000000));
         setSeparatorColor(Color.parseColor("#ffffff"));
