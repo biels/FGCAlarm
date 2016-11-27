@@ -13,6 +13,6 @@ import java.util.List;
 
 public class LineRepositorySQLImpl  { //implements LineRepository
     public LineRepositorySQLImpl() {
-        //throw new NotImplementedException();
+        throw new NotImplementedException();
     }
 }
