@@ -2,6 +2,7 @@ package com.fgcalarm.model.provisioning.provisioners;
 
 import android.graphics.Color;
 
+import com.fgcalarm.exceptions.NotImplementedException;
 import com.fgcalarm.model.entities.Line;
 import com.fgcalarm.model.entities.Station;
 import com.fgcalarm.model.entities.types.Location;
@@ -18,6 +19,6 @@ import java.util.ArrayList;
 public class HardcodedModelProvisioner extends ModelProvisioner {
     @Override
     public void provision() {
-
+        throw new NotImplementedException();
     }
 }
