@@ -6,9 +6,10 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.github.paolorotolo.appintro.AppIntro;
+import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 
-public class IntroActivity extends AppIntro  {
+public class IntroActivity extends AppIntro2 {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +21,16 @@ public class IntroActivity extends AppIntro  {
 
         // Add your slide fragments here.
         // AppIntro will automatically generate the dots indicator and buttons.
-        Fragment instantiate = Slide1Fragment.newInstance("", "");
-        addSlide(instantiate);
+        Fragment instantiate1 = slide1.newInstance("", "");
+        Fragment instantiate2 = slide2.newInstance("", "");
+        Fragment instantiate3 = slide3.newInstance("", "");
+        Fragment instantiate4 = slide4.newInstance("", "");
+        Fragment instantiate5 = slide5.newInstance("", "");
+        addSlide(instantiate1);
+        addSlide(instantiate2);
+        addSlide(instantiate3);
+        addSlide(instantiate4);
+        addSlide(instantiate5);
         /*
         addSlide(firstFragment);
         addSlide(secondFragment);
@@ -37,14 +46,17 @@ public class IntroActivity extends AppIntro  {
         // OPTIONAL METHODS
         // Override bar/separator color.
         //addSlide(Slide1Fragment.newInstance("", ""));
-        addSlide(AppIntroFragment.newInstance("Benvinguts","a partir d'ara podrà gaudir del viatge",R.drawable.iconneg,getColor(R.color.colorFGCTar)));
-        addSlide(AppIntroFragment.newInstance("SegonaSlide","text2",R.drawable.r50,000000));
+        //addSlide(AppIntroFragment.newInstance("Benvinguts","a partir d'ara podrà gaudir del viatge",R.drawable.iconneg,getColor(R.color.colorFGCTar)));
+        //addSlide(AppIntroFragment.newInstance("SegonaSlide","text2",R.drawable.r50,000000));
 
-        setSeparatorColor(Color.parseColor("#ffffff"));
+        //setSeparatorColor(Color.parseColor("#ffffff"));
 
-        setFadeAnimation();
+        //setFadeAnimation();
 
         // Hide Skip/Done button.
+
+        showSkipButton(false);
+
 
         // Turn vibration on and set intensity.
         // NOTE: you will probably need to ask VIBRATE permission in Manifest.
