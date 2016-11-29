@@ -22,7 +22,6 @@ import static com.fgcalarm.R.drawable.s1;
 
 public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSelector.AdapterViewHolder>{
 
-    ArrayList<Estacio> estacions;
     Context ctx;
     Intent intent;
     ArrayList<Station> stations;
@@ -30,28 +29,6 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
     CustomAdapterSelector(Context context, int linia_id){
         ctx = context;
         intent = new Intent(ctx, ActivadorActivity.class);
-
-        /* TODO: DB
-        LoginDataBaseAdapter loginDataBaseAdapter;
-        loginDataBaseAdapter = new LoginDataBaseAdapter(context);
-        loginDataBaseAdapter = loginDataBaseAdapter.open();
-        String users[] = loginDataBaseAdapter.getAllUsers();
-        int ranks[] = loginDataBaseAdapter.returnDescOrderedRanks();
-        int nUsers = loginDataBaseAdapter.getNumberOfUsers();
-        loginDataBaseAdapter.close();
-
-        contactos = new ArrayList<>();
-        for (int i = 0; i < nUsers-1; ++i) {
-            contactos.add(new Contact(0,users[i],String.valueOf(ranks[i])));
-        }*/
-
-        // hardcoded: test
-
-
-        estacions = new ArrayList<>();
-        estacions.add(new Estacio("Estació 1"));
-        estacions.add(new Estacio("Estació 2"));
-
 
         stations = new ArrayList<>();
         stations.add(RepositoryManager.getStationRepository().findAll().get(linia_id));
@@ -94,6 +71,7 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
                 public void onClick(View view) {
 
                     intent.putExtra("estacio", stations.get(x).getName());
+                    intent.putExtra("station_id",stations.get(x).getId());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(intent);
                 }
