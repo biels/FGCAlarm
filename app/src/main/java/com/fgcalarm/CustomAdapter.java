@@ -54,12 +54,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
         View view = inflater.inflate(R.layout.row_layout, viewGroup, false);
         return new AdapterViewHolder(view);
     }
-    int getIcon(Line l){
+    /*int getIcon(Line l){
         return 0; //TODO Implement dynamically form resources
-    }
+    }*/
     @Override
     public void onBindViewHolder(CustomAdapter.AdapterViewHolder adapterViewholder, int position) {
-        int iconLayout = getIcon(lines.get(position));
+        //int iconLayout = getIcon(lines.get(position));
+        int iconLayout = lines.get(position).getIcon();
         switch (iconLayout){
             case 0:
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s1));
@@ -83,18 +84,30 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s8));
                 break;
             case 7:
-                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r5));
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.l6));
                 break;
             case 8:
-                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r50));
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.l7));
                 break;
             case 9:
-                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r6));
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.l8));
                 break;
             case 10:
-                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r60));
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.l12));
                 break;
             case 11:
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r5));
+                break;
+            case 12:
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r50));
+                break;
+            case 13:
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r6));
+                break;
+            case 14:
+                adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.r60));
+                break;
+            case 15:
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.ca7));
 
         }

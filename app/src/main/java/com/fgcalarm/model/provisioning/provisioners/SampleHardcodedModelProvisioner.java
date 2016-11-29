@@ -17,15 +17,16 @@ public class SampleHardcodedModelProvisioner extends ModelProvisioner {
     @Override
     public void provision() {
         //Lines
-        Line l1 = lineRepository.save(new Line(null, "L1"));
-        Line l2 = lineRepository.save(new Line(null, "L2"));
-        Line l3 = lineRepository.save(new Line(null, "L3"));
+        Line l1 = lineRepository.save(new Line(null, "L1",0));
+        Line l2 = lineRepository.save(new Line(null, "L2",1));
+        Line l3 = lineRepository.save(new Line(null, "L3",2));
 
         //Stations
         ArrayList<Line> linesE1 = new ArrayList<>();
         linesE1.add(l1);
         linesE1.add(l2);
-        Station e1 = stationRepository.save(new Station(null, "Estació1", new Location(41.345D, 42.443D), linesE1));
+        Station e1 = stationRepository.save(new Station(null, "AF", new Location(41.345D, 42.443D), linesE1));
+        Station e11 = stationRepository.save(new Station(null, "DF", new Location(41.345D, 42.443D), linesE1));
 
         ArrayList<Line> linesE2 = new ArrayList<>();
         linesE1.add(l2);
