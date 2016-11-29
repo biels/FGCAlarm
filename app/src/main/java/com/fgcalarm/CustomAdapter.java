@@ -54,10 +54,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
         View view = inflater.inflate(R.layout.row_layout, viewGroup, false);
         return new AdapterViewHolder(view);
     }
-
+    int getIcon(Line l){
+        return 0; //TODO Implement dynamically form resources
+    }
     @Override
     public void onBindViewHolder(CustomAdapter.AdapterViewHolder adapterViewholder, int position) {
-        int iconLayout = lines.get(position).getIcon();
+        int iconLayout = getIcon(lines.get(position));
         switch (iconLayout){
             case 0:
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s1));
