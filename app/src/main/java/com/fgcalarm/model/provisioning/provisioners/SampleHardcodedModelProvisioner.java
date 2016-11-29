@@ -17,9 +17,9 @@ public class SampleHardcodedModelProvisioner extends ModelProvisioner {
     @Override
     public void provision() {
         //Lines
-        Line l1 = lineRepository.save(new Line(null, "L1", Color.RED));
-        Line l2 = lineRepository.save(new Line(null, "L2", Color.CYAN));
-        Line l3 = lineRepository.save(new Line(null, "L3", Color.GREEN));
+        Line l1 = lineRepository.save(new Line(null, "L1"));
+        Line l2 = lineRepository.save(new Line(null, "L2"));
+        Line l3 = lineRepository.save(new Line(null, "L3"));
 
         //Stations
         ArrayList<Line> linesE1 = new ArrayList<>();
