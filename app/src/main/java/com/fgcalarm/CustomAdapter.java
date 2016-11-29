@@ -27,49 +27,14 @@ import static com.fgcalarm.R.drawable.s1;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterViewHolder>{
 
-    ArrayList<Linia> linies;
     Context ctx;
     Intent intent;
-
-    int N_LINES = 11;
 
     ArrayList<Line> lines;
 
     CustomAdapter(Context context) {
         ctx = context;
         intent = new Intent(ctx, SelectorEstacio.class);
-
-        /* TODO: DB
-        LoginDataBaseAdapter loginDataBaseAdapter;
-        loginDataBaseAdapter = new LoginDataBaseAdapter(context);
-        loginDataBaseAdapter = loginDataBaseAdapter.open();
-        String users[] = loginDataBaseAdapter.getAllUsers();
-        int ranks[] = loginDataBaseAdapter.returnDescOrderedRanks();
-        int nUsers = loginDataBaseAdapter.getNumberOfUsers();
-        loginDataBaseAdapter.close();
-
-        contactos = new ArrayList<>();
-        for (int i = 0; i < nUsers-1; ++i) {
-            contactos.add(new Contact(0,users[i],String.valueOf(ranks[i])));
-        }*/
-
-        // hardcoded: test
-        ArrayList<Estacio> estacions = new ArrayList<>();
-        estacions.add(new Estacio("Test"));
-
-        linies = new ArrayList<>();
-        linies.add(new Linia(0, "Plaça Catalunya - Terrassa Nacions Unides", estacions));
-        linies.add(new Linia(1, "Plaça Catalunya - Sabadell Rambla", estacions));
-        linies.add(new Linia(2, "Plaça Catalunya - Rubí", estacions));
-        linies.add(new Linia(3, "Plaça Catalunya - Universitat Autònoma", estacions));
-        linies.add(new Linia(4, "Plaça Espanya - Can Ros", estacions));
-        linies.add(new Linia(5, "Plaça Espanya - Olesa de Montserrat", estacions));
-        linies.add(new Linia(6, "Plaça Espanya - Martorell Enllaç", estacions));
-        linies.add(new Linia(7, "Plaça Espanya - Manresa", estacions));
-        linies.add(new Linia(8, "Plaça Espanya - Manresa", estacions));
-        linies.add(new Linia(9, "Plaça Espanya - Igualada", estacions));
-        linies.add(new Linia(10, "Plaça Espanya - Igualada", estacions));
-        linies.add(new Linia(11, "Lleida Pirineus - La Pobla de Segur", estacions));
 
         lines = new ArrayList<>();
 
