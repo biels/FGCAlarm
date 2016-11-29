@@ -586,7 +586,7 @@ public class HardcodedModelProvisioner extends ModelProvisioner {
         ArrayList<Line> linesvolpelleres = new ArrayList<>();
         linesvolpelleres.add(s2);
         linesvolpelleres.add(s55);
-        Station volpelleres = stationRepository.save(new Station(null, "Volpelleres", new Location(41.481247, 2.072928∫∫), linesvolpelleres));
+        Station volpelleres = stationRepository.save(new Station(null, "Volpelleres", new Location(41.481247, 2.072928), linesvolpelleres));
 
     }
 }
