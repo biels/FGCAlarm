@@ -14,18 +14,13 @@ import java.util.List;
 
 public class Line extends Entity {
     String tag;
-    private Integer color;
-
-    private int icon;
 
     //Lazy links
     private List<Station> stations;
 
-    public Line(Long id, String tag, Integer color, int icon) {
+    public Line(Long id, String tag) {
         super(id);
         this.tag = tag;
-        this.color = color;
-        this.icon = icon;
     }
 
     public String getTag() {
@@ -36,25 +31,9 @@ public class Line extends Entity {
         this.tag = tag;
     }
 
-    public Integer getColor() {
-        return color;
-    }
-
-    public void setColor(Integer color) {
-        this.color = color;
-    }
-
     public List<Station> getStations() {
         if(stations == null)stations = RepositoryManager.getStationRepository()
                 .findByLine(getId());
         return stations;
-    }
-
-    public int getIcon() {
-        return icon;
-    }
-
-    public void setIcon(int icon) {
-        this.icon = icon;
     }
 }
