@@ -4,14 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.fgcalarm.model.entities.Line;
+import com.fgcalarm.model.persistence.RepositoryManager;
+import com.fgcalarm.model.persistence.repositories.LineRepository;
+import com.fgcalarm.model.persistence.repositories.impl.inmemory.LineRepositoryInMemoryImpl;
+import com.fgcalarm.model.provisioning.ProvisioningManager;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static com.fgcalarm.R.drawable.s1;
 
@@ -22,7 +31,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
     Context ctx;
     Intent intent;
 
-    CustomAdapter(Context context){
+    int N_LINES = 11;
+
+    ArrayList<Line> lines;
+
+    CustomAdapter(Context context) {
         ctx = context;
         intent = new Intent(ctx, SelectorEstacio.class);
 
@@ -45,18 +58,28 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
         estacions.add(new Estacio("Test"));
 
         linies = new ArrayList<>();
-        linies.add(new Linia(0,"Plaça Catalunya - Terrassa Nacions Unides",estacions));
-        linies.add(new Linia(1,"Plaça Catalunya - Sabadell Rambla",estacions));
-        linies.add(new Linia(2,"Plaça Catalunya - Rubí",estacions));
-        linies.add(new Linia(3,"Plaça Catalunya - Universitat Autònoma",estacions));
-        linies.add(new Linia(4,"Plaça Espanya - Can Ros",estacions));
-        linies.add(new Linia(5,"Plaça Espanya - Olesa de Montserrat",estacions));
-        linies.add(new Linia(6,"Plaça Espanya - Martorell Enllaç",estacions));
-        linies.add(new Linia(7,"Plaça Espanya - Manresa",estacions));
-        linies.add(new Linia(8,"Plaça Espanya - Manresa",estacions));
-        linies.add(new Linia(9,"Plaça Espanya - Igualada",estacions));
-        linies.add(new Linia(10,"Plaça Espanya - Igualada",estacions));
-        linies.add(new Linia(11, "Lleida Pirineus - La Pobla de Segur",estacions));
+        linies.add(new Linia(0, "Plaça Catalunya - Terrassa Nacions Unides", estacions));
+        linies.add(new Linia(1, "Plaça Catalunya - Sabadell Rambla", estacions));
+        linies.add(new Linia(2, "Plaça Catalunya - Rubí", estacions));
+        linies.add(new Linia(3, "Plaça Catalunya - Universitat Autònoma", estacions));
+        linies.add(new Linia(4, "Plaça Espanya - Can Ros", estacions));
+        linies.add(new Linia(5, "Plaça Espanya - Olesa de Montserrat", estacions));
+        linies.add(new Linia(6, "Plaça Espanya - Martorell Enllaç", estacions));
+        linies.add(new Linia(7, "Plaça Espanya - Manresa", estacions));
+        linies.add(new Linia(8, "Plaça Espanya - Manresa", estacions));
+        linies.add(new Linia(9, "Plaça Espanya - Igualada", estacions));
+        linies.add(new Linia(10, "Plaça Espanya - Igualada", estacions));
+        linies.add(new Linia(11, "Lleida Pirineus - La Pobla de Segur", estacions));
+
+        lines = new ArrayList<>();
+
+        RepositoryManager.attatchImplementation(RepositoryManager.ImplementationType.IN_MEMORY);
+        ProvisioningManager.provisionModel(ProvisioningManager.ProvisioningStrategy.SAMPLE_HARDCODED);
+
+
+        for (int i = 0; i < RepositoryManager.getLineRepository().findAll().size(); i++) {
+            lines.add(RepositoryManager.getLineRepository().findAll().get(i));
+        }
     }
 
 
@@ -69,7 +92,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
 
     @Override
     public void onBindViewHolder(CustomAdapter.AdapterViewHolder adapterViewholder, int position) {
-        int iconLayout = linies.get(position).getIcon();
+        int iconLayout = lines.get(position).getIcon();
         switch (iconLayout){
             case 0:
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s1));
@@ -108,13 +131,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.ca7));
 
         }
-        adapterViewholder.name.setText(linies.get(position).getName());
+        adapterViewholder.name.setText(lines.get(position).getTag());
 
     }
 
     @Override
     public int getItemCount() {
-        return linies.size();
+        return lines.size();
     }
 
 
@@ -135,7 +158,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
                 @Override
                 public void onClick(View view) {
 
-                    intent.putExtra("linia", linies.get(x).getName());
+                    intent.putExtra("linia", lines.get(x).getTag());
+                    intent.putExtra("linia_id",x);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(intent);
                 }
