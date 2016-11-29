@@ -14,15 +14,13 @@ import java.util.List;
 
 public class Line extends Entity {
     String tag;
-    private Integer color;
 
     //Lazy links
     private List<Station> stations;
 
-    public Line(Long id, String tag, Integer color) {
+    public Line(Long id, String tag) {
         super(id);
         this.tag = tag;
-        this.color = color;
     }
 
     public String getTag() {
@@ -31,14 +29,6 @@ public class Line extends Entity {
 
     public void setTag(String tag) {
         this.tag = tag;
-    }
-
-    public Integer getColor() {
-        return color;
-    }
-
-    public void setColor(Integer color) {
-        this.color = color;
     }
 
     public List<Station> getStations() {

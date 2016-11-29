@@ -19,30 +19,29 @@ import java.util.ArrayList;
 public class HardcodedModelProvisioner extends ModelProvisioner {
     @Override
     public void provision() {
-        throw new NotImplementedException();
         //METROPOLITAN Lines
-        Line l6 = lineRepository.save(new Line(null, "L6", Color.PURPLE));
-        Line l7 = lineRepository.save(new Line(null, "L7", Color.BROWN));
-        Line l8 = lineRepository.save(new Line(null, "L8", Color.MAGENTA));
-        Line l12 = lineRepository.save(new Line(null, "L12", Color.PURPLE));
+        Line l6 = lineRepository.save(new Line(null, "L6"));
+        Line l7 = lineRepository.save(new Line(null, "L7"));
+        Line l8 = lineRepository.save(new Line(null, "L8"));
+        Line l12 = lineRepository.save(new Line(null, "L12"));
 
         //BARCELONA-VALLES Lines
-        Line s1 = lineRepository.save(new Line(null, "S1", Color.ORANGE));
-        Line s2 = lineRepository.save(new Line(null, "S2", Color.GREEN));
-        Line s5 = lineRepository.save(new Line(null, "S5", Color.BLUE));
-        Line s55 = lineRepository.save(new Line(null, "S55", Color.BLUE));
+        Line s1 = lineRepository.save(new Line(null, "S1"));
+        Line s2 = lineRepository.save(new Line(null, "S2"));
+        Line s5 = lineRepository.save(new Line(null, "S5"));
+        Line s55 = lineRepository.save(new Line(null, "S55"));
 
         //LLOBREGAT-ANOIA Lines
-        Line s33 = lineRepository.save(new Line(null, "S33", Color.MAGENTA));
-        Line s4 = lineRepository.save(new Line(null, "S4", Color.GREEN));
-        Line s8 = lineRepository.save(new Line(null, "S8", Color.CYAN));
-        Line r5 = lineRepository.save(new Line(null, "R5", Color.CYAN));
-        Line r50 = lineRepository.save(new Line(null, "R50", Color.BLUE));
-        Line r6 = lineRepository.save(new Line(null, "R6", Color.LTGRAY));
-        Line r60 = lineRepository.save(new Line(null, "R60", Color.DKGRAY));
+        Line s33 = lineRepository.save(new Line(null, "S33"));
+        Line s4 = lineRepository.save(new Line(null, "S4"));
+        Line s8 = lineRepository.save(new Line(null, "S8"));
+        Line r5 = lineRepository.save(new Line(null, "R5"));
+        Line r50 = lineRepository.save(new Line(null, "R50"));
+        Line r6 = lineRepository.save(new Line(null, "R6"));
+        Line r60 = lineRepository.save(new Line(null, "R60"));
 
         //REGIONAL SERVICES
-        Line ca7 = lineRepository.save(new Line(null, "Ca7", Color.BROWN));
+        Line ca7 = lineRepository.save(new Line(null, "Ca7"));
 
         //Stations
         ArrayList<Line> linesarbrera = new ArrayList<>();
