@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.fgcalarm.model.entities.Station;
+import com.fgcalarm.model.persistence.RepositoryManager;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -21,8 +25,9 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
     ArrayList<Estacio> estacions;
     Context ctx;
     Intent intent;
+    ArrayList<Station> stations;
 
-    CustomAdapterSelector(Context context){
+    CustomAdapterSelector(Context context, int linia_id){
         ctx = context;
         intent = new Intent(ctx, ActivadorActivity.class);
 
@@ -46,6 +51,10 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
         estacions = new ArrayList<>();
         estacions.add(new Estacio("Estació 1"));
         estacions.add(new Estacio("Estació 2"));
+
+
+        stations = new ArrayList<>();
+        stations.add(RepositoryManager.getStationRepository().findAll().get(linia_id));
     }
 
 
@@ -58,13 +67,13 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
 
     @Override
     public void onBindViewHolder(CustomAdapterSelector.AdapterViewHolder adapterViewholder, int position) {
-       adapterViewholder.name.setText(estacions.get(position).getName());
+       adapterViewholder.name.setText(stations.get(position).getName());
 
     }
 
     @Override
     public int getItemCount() {
-        return estacions.size();
+        return stations.size();
     }
 
 
@@ -84,7 +93,7 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
                 @Override
                 public void onClick(View view) {
 
-                    intent.putExtra("estacio", estacions.get(x).getName());
+                    intent.putExtra("estacio", stations.get(x).getName());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(intent);
                 }
