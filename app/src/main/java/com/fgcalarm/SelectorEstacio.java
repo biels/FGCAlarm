@@ -17,8 +17,11 @@ public class SelectorEstacio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Bundle extras = getIntent().getExtras();
+        String value;
+        int linia_id = 0;
         if (extras != null) {
-            String value = extras.getString("linia");
+            value = extras.getString("linia");
+            linia_id = extras.getInt("linia_id");
             //The key argument here must match that used in the other activity
         }
 
@@ -53,7 +56,7 @@ public class SelectorEstacio extends AppCompatActivity {
         //El adapter se encarga de  adaptar un objeto definido en el c�digo a una vista en xml
         //seg�n la estructura definida.
         //Asignamos nuestro custom Adapter
-        mRecyclerView.setAdapter(new CustomAdapterSelector(this.getApplicationContext()));
+        mRecyclerView.setAdapter(new CustomAdapterSelector(this.getApplicationContext(),linia_id));
     }
 
     /*private class OnItemClickListener extends RecyclerItemClickListener.SimpleOnItemClickListener {

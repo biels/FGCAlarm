@@ -16,13 +16,16 @@ public class Line extends Entity {
     String tag;
     private Integer color;
 
+    private int icon;
+
     //Lazy links
     private List<Station> stations;
 
-    public Line(Long id, String tag, Integer color) {
+    public Line(Long id, String tag, Integer color, int icon) {
         super(id);
         this.tag = tag;
         this.color = color;
+        this.icon = icon;
     }
 
     public String getTag() {
@@ -45,5 +48,13 @@ public class Line extends Entity {
         if(stations == null)stations = RepositoryManager.getStationRepository()
                 .findByLine(getId());
         return stations;
+    }
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
     }
 }
