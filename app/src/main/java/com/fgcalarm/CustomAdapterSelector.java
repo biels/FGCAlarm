@@ -27,10 +27,12 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
     Context ctx;
     Intent intent;
     ArrayList<Station> stations;
+    int linia_id_p;
 
     CustomAdapterSelector(Context context, int linia_id){
         ctx = context;
-        intent = new Intent(ctx, ActivadorActivity.class);
+        intent = new Intent(ctx, ProxAlertActivity.class);
+        linia_id_p = linia_id;
 
         RepositoryManager.attatchImplementation(RepositoryManager.ImplementationType.IN_MEMORY);
         ProvisioningManager.provisionModel(ProvisioningManager.ProvisioningStrategy.HARDCODED);
@@ -55,6 +57,7 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
     @Override
     public void onBindViewHolder(CustomAdapterSelector.AdapterViewHolder adapterViewholder, int position) {
        adapterViewholder.name.setText(stations.get(position).getName());
+        adapterViewholder.position = position;
 
     }
 
@@ -68,6 +71,7 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
     public class AdapterViewHolder extends RecyclerView.ViewHolder {
 
 
+        public int position;
         public ImageView icon;
         public TextView name;
         public View v;
@@ -82,6 +86,8 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
 
                     intent.putExtra("estacio", stations.get(x).getName());
                     intent.putExtra("station_id",stations.get(x).getId());
+                    intent.putExtra("pseudo_station_id",x);
+                    intent.putExtra("linia_id",linia_id_p);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(intent);
                 }

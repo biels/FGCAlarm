@@ -27,6 +27,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.fgcalarm.model.entities.Station;
+import com.fgcalarm.model.persistence.RepositoryManager;
+import com.fgcalarm.model.provisioning.ProvisioningManager;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
@@ -38,7 +41,7 @@ public class ProxAlertActivity extends Activity {
     private static final long MINIMUM_TIME_BETWEEN_UPDATE = 1000; // in Milliseconds
 
     private static final long POINT_RADIUS = 1000; // in Meters
-    private static final long PROX_ALERT_EXPIRATION = -1;
+    private static final long PROX_ALERT_EXPIRATION = 7200000; // -1: never
 
     private static final String POINT_LATITUDE_KEY = "POINT_LATITUDE_KEY";
     private static final String POINT_LONGITUDE_KEY = "POINT_LONGITUDE_KEY";
@@ -58,6 +61,13 @@ public class ProxAlertActivity extends Activity {
 
     private Context ctx;
 
+    private Station station;
+
+    private Button button;
+
+    private PendingIntent proximityIntent;
+
+
     private final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1005;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -70,7 +80,31 @@ public class ProxAlertActivity extends Activity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_prox_alert);
+        String estacio = "";
+        Long id = 0L;
+        Bundle extras = getIntent().getExtras();
+        int pseudo_station_id = 0;
+        int linia_id_p = 0;
+        if (extras != null) {
+            id = extras.getLong("station_id");
+            estacio = extras.getString("estacio");
+            pseudo_station_id = extras.getInt("pseudo_station_id");
+            linia_id_p = extras.getInt("linia_id_p");
+            //The key argument here must match that used in the other activity
+        }
+        setContentView(R.layout.activity_activador);
+
+       /* intent_not = new Intent(this, ActivadorActivity.class);
+        pendingIntentNot = PendingIntent.getActivity(this, 0, intent_not, PendingIntent.FLAG_UPDATE_CURRENT);*/
+
+        RepositoryManager.attatchImplementation(RepositoryManager.ImplementationType.IN_MEMORY);
+        ProvisioningManager.provisionModel(ProvisioningManager.ProvisioningStrategy.HARDCODED);
+
+        station = RepositoryManager.getStationRepository().findOne(id);
+        //station = RepositoryManager.getLineRepository().findAll().get(linia_id_p).getStations().get(pseudo_station_id);
+        //station = RepositoryManager.getLineRepository().findAll().get(linia_id_p).getStations().get(0);
+
+        addProximityAlert(station.getLocation().getLatitude(), station.getLocation().getLongitude());
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -99,84 +133,37 @@ public class ProxAlertActivity extends Activity {
 
         );
 
-        latitudeEditText = (EditText) findViewById(R.id.point_latitude);
-
-        longitudeEditText = (EditText) findViewById(R.id.point_longitude);
-
-        findCoordinatesButton = (Button) findViewById(R.id.find_coordinates_button);
-
-        savePointButton = (Button) findViewById(R.id.save_point_button);
-
-        findCoordinatesButton.setOnClickListener(new OnClickListener() {
-
+        button = (Button) findViewById(R.id.cancel_button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
+            public void onClick(View view) {
 
-            public void onClick(View v) {
-
-                populateCoordinatesFromLastKnownLocation();
-
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                locationManager.removeProximityAlert(proximityIntent);
             }
-
         });
 
-        savePointButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-
-            public void onClick(View v) {
-
-                saveProximityAlertPoint();
-
-            }
-
-        });
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    private void saveProximityAlertPoint() {
-
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-            return;
-        }
-        Location location =
-
-                locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-        if (location == null) {
-
-            Toast.makeText(this, "No last known location. Aborting...",
-
-                    Toast.LENGTH_LONG).show();
-
-            return;
-
-        }
-
-        saveCoordinatesInPreferences((float) location.getLatitude(),
-
-                (float) location.getLongitude());
-
-        addProximityAlert(location.getLatitude(), location.getLongitude());
-    }
 
     private void addProximityAlert(double latitude, double longitude) {
 
         Intent intent = new Intent(PROX_ALERT_INTENT);
 
-        PendingIntent proximityIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        proximityIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -211,50 +198,6 @@ public class ProxAlertActivity extends Activity {
 
     }
 
-    private void populateCoordinatesFromLastKnownLocation() {
-
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-            return;
-        }
-        Location location =
-
-                locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-        if (location != null) {
-
-            latitudeEditText.setText(nf.format(location.getLatitude()));
-
-            longitudeEditText.setText(nf.format(location.getLongitude()));
-
-        }
-    }
-
-    private void saveCoordinatesInPreferences(float latitude, float longitude) {
-
-        SharedPreferences prefs =
-
-                this.getSharedPreferences(getClass().getSimpleName(),
-
-                        Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor prefsEditor = prefs.edit();
-
-        prefsEditor.putFloat(POINT_LATITUDE_KEY, latitude);
-
-        prefsEditor.putFloat(POINT_LONGITUDE_KEY, longitude);
-
-        prefsEditor.commit();
-    }
 
     private Location retrievelocationFromPreferences() {
 

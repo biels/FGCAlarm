@@ -60,8 +60,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
     public void onBindViewHolder(CustomAdapter.AdapterViewHolder adapterViewholder, int position) {
         //int iconLayout = getIcon(lines.get(position));
         int iconLayout = lines.get(position).getIcon();
-        adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.ic_play_dark));
-        /*switch (iconLayout){
+        switch (iconLayout){
             case 0:
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.s1));
                 break;
@@ -110,7 +109,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
             case 15:
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.ca7));
 
-        }*/
+        }
         adapterViewholder.position = position;
 
     }
