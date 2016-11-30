@@ -21,22 +21,25 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"
-            android:text="El temps esperat del trajecte és de:"
+            android:text="Nosaltres ens encarreguem de tot"
             android:textSize="20dp"
             android:fontFamily="sans-serif-condensed"
             android:textColor="#fff"
             android:textAlignment="center"
             android:layout_gravity="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"></LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="15"
-            android:text="1 hora i 50 min"
-            android:textSize="50dp"
-            android:fontFamily="sans-serif-condensed"
-            android:textColor="#000"
+            android:text="Si vols cancel·lar l'alarma,  prem el botó que tens a continuació"
             android:textAlignment="center"
-            android:layout_gravity="center"/>
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="#000"></TextView>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
