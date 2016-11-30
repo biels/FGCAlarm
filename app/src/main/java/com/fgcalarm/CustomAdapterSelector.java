@@ -20,7 +20,6 @@ import com.fgcalarm.model.provisioning.ProvisioningManager;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static com.fgcalarm.R.drawable.s1;
 
 
 public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSelector.AdapterViewHolder>{

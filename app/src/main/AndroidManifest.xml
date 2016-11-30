@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fgcalarm">
 
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -14,25 +13,41 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashScreen"
+        <activity
+            android:name=".SplashScreen"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".SelectorEstacio"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ActivadorActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SelectorEstacio"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivadorActivity"
+            android:screenOrientation="portrait" />
 
-        <service android:name=".VibrateService"
-            android:screenOrientation="portrait"/>
+        <service
+            android:name=".VibrateService"
+            android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".ProxAlertActivity"
+            android:screenOrientation="portrait">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".IntroActivity"
-            android:screenOrientation="portrait"/>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
+    </activity>
+        <activity android:name=".IntroActivity" />
+
+        <receiver
+            android:name=".ProximityIntentReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
