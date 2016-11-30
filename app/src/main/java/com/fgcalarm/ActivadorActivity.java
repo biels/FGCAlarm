@@ -49,7 +49,7 @@ public class ActivadorActivity extends AppCompatActivity {
         pendingIntentNot = PendingIntent.getActivity(this, 0, intent_not, PendingIntent.FLAG_UPDATE_CURRENT);*/
 
         RepositoryManager.attatchImplementation(RepositoryManager.ImplementationType.IN_MEMORY);
-        ProvisioningManager.provisionModel(ProvisioningManager.ProvisioningStrategy.SAMPLE_HARDCODED);
+        ProvisioningManager.provisionModel(ProvisioningManager.ProvisioningStrategy.HARDCODED);
 
         station = RepositoryManager.getStationRepository().findOne(id);
 

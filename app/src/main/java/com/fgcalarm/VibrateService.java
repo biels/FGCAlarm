@@ -36,7 +36,7 @@ public class VibrateService  extends Service
         // 2nd argument is for repetition pass -1 if you do not want to repeat the Vibrate
         // v.vibrate(pattern,-1);
 
-        Toast.makeText(getApplicationContext(), "Phone is Vibrating", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Hey!", Toast.LENGTH_LONG).show();
     }
 
     @Override
