@@ -39,7 +39,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
         lines = new ArrayList<>();
 
         RepositoryManager.attatchImplementation(RepositoryManager.ImplementationType.IN_MEMORY);
-        ProvisioningManager.provisionModel(ProvisioningManager.ProvisioningStrategy.SAMPLE_HARDCODED);
+        ProvisioningManager.provisionModel(ProvisioningManager.ProvisioningStrategy.HARDCODED);
 
 
         for (int i = 0; i < RepositoryManager.getLineRepository().findAll().size(); i++) {
@@ -112,6 +112,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
 
         }
         adapterViewholder.name.setText(lines.get(position).getTag());
+        adapterViewholder.position = position;
 
     }
 
@@ -127,8 +128,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
 
         public ImageView icon;
         public TextView name;
+        public int position;
         public View v;
-        public AdapterViewHolder(View itemView) {
+        public AdapterViewHolder(final View itemView) {
             super(itemView);
             final int x = itemView.getVerticalScrollbarPosition();
             this.v = itemView;
@@ -138,8 +140,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
                 @Override
                 public void onClick(View view) {
 
-                    intent.putExtra("linia", lines.get(x).getTag());
-                    intent.putExtra("linia_id",x);
+                    intent.putExtra("linia", lines.get(position).getTag());
+                    intent.putExtra("linia_id",position);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(intent);
                 }

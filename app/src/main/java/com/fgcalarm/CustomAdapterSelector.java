@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fgcalarm.model.entities.Line;
 import com.fgcalarm.model.entities.Station;
 import com.fgcalarm.model.persistence.RepositoryManager;
+import com.fgcalarm.model.provisioning.ProvisioningManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,8 +33,16 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
         ctx = context;
         intent = new Intent(ctx, ActivadorActivity.class);
 
+        RepositoryManager.attatchImplementation(RepositoryManager.ImplementationType.IN_MEMORY);
+        ProvisioningManager.provisionModel(ProvisioningManager.ProvisioningStrategy.HARDCODED);
+
         stations = new ArrayList<>();
-        stations.add(RepositoryManager.getStationRepository().findAll().get(linia_id));
+        Line line = RepositoryManager.getLineRepository().findAll().get(linia_id);
+        Log.v("hola",String.valueOf(linia_id));
+        for (int i = 0; i < line.getStations().size(); i++) {
+            stations.add(line.getStations().get(i));
+        }
+
     }
 
 
