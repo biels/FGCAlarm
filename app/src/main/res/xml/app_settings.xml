@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Distància">
+        <com.pavelsikun.seekbarpreference.SeekBarPreference
+            android:title="Distància"
+            android:key="distancia-alarma"
+            android:summary="Defineix la distància a la que ha de sonar l'alarma (en km)"
+            android:enabled="true"
+            android:defaultValue="1"
+
+            sample:msbp_minValue="1"
+            sample:msbp_maxValue="10"
+            sample:msbp_interval="1"
+            sample:msbp_measurementUnit="%"
+            sample:msbp_dialogEnabled="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Vibració">
+        <com.pavelsikun.seekbarpreference.SeekBarPreference
+            android:title="Vibració"
+            android:key="vibration-range"
+            android:summary="Defineix la durada de la vibració al sonar l'alarma."
+            android:enabled="true"
+            android:defaultValue="5"
+            sample:msbp_minValue="1"
+            sample:msbp_maxValue="10"
+            sample:msbp_interval="1"
+            sample:msbp_dialogEnabled="false"/>
+    </PreferenceCategory>
 
 </PreferenceScreen>
