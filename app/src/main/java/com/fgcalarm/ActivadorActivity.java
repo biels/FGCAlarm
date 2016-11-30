@@ -31,6 +31,21 @@ public class ActivadorActivity extends AppCompatActivity {
     private Intent intent_not;
     private PendingIntent pendingIntentNot;
 
+    private final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+
+    private Button button;
+
+
+    private double latitud;
+    private double longitud;
+    private float radius;
+    private long expiration;
+    private Intent intent;
+    private PendingIntent pendingIntent;
+
+    private LocationManager locationManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -53,12 +68,12 @@ public class ActivadorActivity extends AppCompatActivity {
 
         station = RepositoryManager.getStationRepository().findOne(id);
 
-        double latitud = station.getLocation().getLatitude();
-        double longitud = station.getLocation().getLongitude();
-        float radius = 50;
-        long expiration = 7200000;
-        Intent intent = new Intent(this, VibrateService.class);
-        final PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, FLAG_CANCEL_CURRENT);
+        latitud = station.getLocation().getLatitude();
+        longitud = station.getLocation().getLongitude();
+        radius = 50;
+        expiration = 7200000;
+        intent = new Intent(this, VibrateService.class);
+        pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, FLAG_CANCEL_CURRENT);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -67,16 +82,22 @@ public class ActivadorActivity extends AppCompatActivity {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+
+
             return;
         }
         //displayNotification();
 
 
-        final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         locationManager.addProximityAlert(latitud, longitud, radius, expiration, pendingIntent);
 
 
-        Button button = (Button) findViewById(R.id.cancel_button);
+        button = (Button) findViewById(R.id.cancel_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,52 +125,69 @@ public class ActivadorActivity extends AppCompatActivity {
                         .setContentIntent(pendingIntentNot);
 
 
-                     // Sets an ID for the notification
-                     int mNotificationId = 001;
-                     // Gets an instance of the NotificationManager service
-                     NotificationManager mNotifyMgr =
-                             (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                     // Builds the notification and issues it.
-                     mNotifyMgr.notify(mNotificationId, mBuilder.build());
-
-        //displayNotification();
-
+        // Sets an ID for the notification
+        int mNotificationId = 001;
+        // Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
 
 
     }
 
 
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
+                    locationManager.addProximityAlert(latitud, longitud, radius, expiration, pendingIntent);
+
+                    NotificationCompat.Builder mBuilder =
+                            new NotificationCompat.Builder(this)
+                                    .setSmallIcon(R.drawable.fgcalarmlogo)
+                                    .setContentTitle(station.getName())
+                                    .setContentText(station.getName())
+                                    .setContentIntent(pendingIntentNot);
 
 
+                    // Sets an ID for the notification
+                    int mNotificationId = 001;
+                    // Gets an instance of the NotificationManager service
+                    NotificationManager mNotifyMgr =
+                            (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                    // Builds the notification and issues it.
+                    mNotifyMgr.notify(mNotificationId, mBuilder.build());
 
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
 
+                } else {
 
-    protected void displayNotification(){
-        /*Intent i = new Intent(this, NotificationView.class);
-        i.putExtra("notificationID", notificationID);
-
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, 0);*/
-        NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-
-        CharSequence ticker ="a eliminar";
-        CharSequence contentTitle = "Expressió invàlida";
-        CharSequence contentText = "Expressió invàlida, no es pot calcular";
-        Notification noti = new NotificationCompat.Builder(this)
-                //.setContentIntent(pendingIntent)
-                .setTicker(ticker)
-                .setContentTitle(contentTitle)
-                .setContentText(contentText)
-                .setSmallIcon(R.drawable.fgcalarmlogo)
-                //.addAction(R.drawable.warning, ticker, pendingIntent)
-                //.setVibrate(new long[] {100, 250, 100, 500})
-                .build();
-        nm.notify(001, noti);
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+        }
     }
-
-
-
-
 
 
 
