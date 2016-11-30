@@ -111,7 +111,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
                 adapterViewholder.icon.setImageDrawable(adapterViewholder.v.getResources().getDrawable(R.drawable.ca7));
 
         }
-        adapterViewholder.name.setText(lines.get(position).getTag());
         adapterViewholder.position = position;
 
     }
@@ -127,7 +126,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
 
 
         public ImageView icon;
-        public TextView name;
+        public ImageView icon2;
+        public ImageView icon3;
         public int position;
         public View v;
         public AdapterViewHolder(final View itemView) {
@@ -135,11 +135,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
             final int x = itemView.getVerticalScrollbarPosition();
             this.v = itemView;
             this.icon = (ImageView) itemView.findViewById(R.id.icon);
-            this.name = (TextView) itemView.findViewById(R.id.name);
             this.icon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     intent.putExtra("linia", lines.get(position).getTag());
                     intent.putExtra("linia_id",position);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
