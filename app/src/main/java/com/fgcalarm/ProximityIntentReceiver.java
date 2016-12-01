@@ -17,6 +17,8 @@ public class ProximityIntentReceiver extends BroadcastReceiver {
 
     private static final int NOTIFICATION_ID = 1000;
 
+    private String station_s;
+
     @Override
     public void onReceive(Context context, Intent intent) {
 
@@ -46,9 +48,10 @@ public class ProximityIntentReceiver extends BroadcastReceiver {
 
         Notification notification = createNotification();
 
+        station_s = "Estem arribant!";
+
         notification.contentIntent = pendingIntent;
-        String s = "Proximity Alert!";
-        notification.tickerText = s;
+        notification.tickerText = station_s;
 
         /*notification.setLatestEventInfo(context,
 
@@ -93,9 +96,9 @@ public class ProximityIntentReceiver extends BroadcastReceiver {
         //NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         NotificationManager nm = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
         int notificationID = 1002;
-        CharSequence ticker ="Proximity alert";
-        CharSequence contentTitle = "Proximity alert";
-        CharSequence contentText = "Proximity alert";
+        CharSequence ticker = station_s;
+        CharSequence contentTitle = station_s;
+        CharSequence contentText = station_s;
         Notification noti = new NotificationCompat.Builder(context)
                 //.setContentIntent(pendingIntent)
                 .setTicker(ticker)

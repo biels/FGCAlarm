@@ -28,6 +28,7 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
     Intent intent;
     ArrayList<Station> stations;
     int linia_id_p;
+    Long hola;
 
     CustomAdapterSelector(Context context, int linia_id){
         ctx = context;
@@ -39,6 +40,7 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
 
         stations = new ArrayList<>();
         Line line = RepositoryManager.getLineRepository().findAll().get(linia_id);
+        hola = line.getId();
         Log.v("hola",String.valueOf(linia_id));
         for (int i = 0; i < line.getStations().size(); i++) {
             stations.add(line.getStations().get(i));
@@ -83,11 +85,11 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
             this.name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    intent.putExtra("estacio", stations.get(x).getName());
-                    intent.putExtra("station_id",stations.get(x).getId());
-                    intent.putExtra("pseudo_station_id",x);
+                    intent.putExtra("estacio", stations.get(position).getName());
+                    intent.putExtra("station_id",stations.get(position).getId());
+                    intent.putExtra("pseudo_station_id",position);
                     intent.putExtra("linia_id",linia_id_p);
+                    intent.putExtra("hola",hola);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(intent);
                 }
