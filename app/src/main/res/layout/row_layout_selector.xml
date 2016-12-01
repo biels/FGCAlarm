@@ -10,7 +10,8 @@
         android:textAlignment="center"
         android:textColor="#e67a2b"
         android:background="#fff"
-        android:textSize="15dp"
+        android:textSize="20dp"
+        android:padding="15dp"
         android:textAllCaps="true"
         android:layout_weight="1"
         android:fontFamily="sans-serif-condensed"/>
