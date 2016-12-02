@@ -135,9 +135,6 @@ public class ProxAlertActivity extends Activity {
         pendingIntentNot = PendingIntent.getActivity(this, 0, intent_not, PendingIntent.FLAG_UPDATE_CURRENT);*/
         button = (Button) findViewById(R.id.cancel_button);
 
-        RepositoryManager.attatchImplementation(RepositoryManager.ImplementationType.IN_MEMORY);
-        ProvisioningManager.provisionModel(ProvisioningManager.ProvisioningStrategy.HARDCODED);
-
         station = RepositoryManager.getStationRepository().findOne(id);
         Log.v("name", station.getName());
         Double lat = station.getLocation().getLatitude();
