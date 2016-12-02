@@ -32,7 +32,7 @@
             android:textSize="25dp"
             android:textColor="#e67a2b"
             android:background="#fff"
-            android:text="Selecciona la línia de destí :"
+            android:text="Selecciona la línia de destí:"
             android:fontFamily="sans-serif-condensed"
             android:textAlignment="center"/>
 
