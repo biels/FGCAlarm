@@ -106,7 +106,7 @@ public class ProximityIntentReceiver extends BroadcastReceiver {
                 .setContentText(contentText)
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
                 //.addAction(R.drawable.warning, ticker, pendingIntent)
-                .setVibrate(new long[] {100, 250, 100, 500})
+                .setVibrate(new long[] {5000, 2500, 1000, 5000})
                 .build();
         nm.notify(notificationID, noti);
     }

@@ -457,7 +457,7 @@ public class ProxAlertActivity extends Activity {
 
     protected void displayNotification(Context context,String station_s){
 
-        station_s = "Anem cap a " + station_s;
+        station_s = "Destinació: " + station_s;
         /*Intent i = new Intent(this, NotificationView.class);
         i.putExtra("notificationID", notificationID);
 

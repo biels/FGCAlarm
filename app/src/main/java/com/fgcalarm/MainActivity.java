@@ -28,7 +28,7 @@ import java.util.Arrays;
 
 
 public class MainActivity extends ActionBarActivity {
-    final static boolean SHOW_INTRO_ONLY_ONCE = false;
+    final static boolean SHOW_INTRO_ONLY_ONCE = true;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayout;
     @Override
