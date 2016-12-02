@@ -205,7 +205,7 @@ public class ProxAlertActivity extends Activity {
                 }
                 locationManager.removeProximityAlert(proximityIntent);
                 nm.cancel(notificationID);
-
+                finish();
             }
 
         });
