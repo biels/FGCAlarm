@@ -475,6 +475,7 @@ public class ProxAlertActivity extends Activity {
                 .setContentTitle(contentTitle)
                 .setContentText(contentText)
                 .setSmallIcon(R.drawable.ic_stat_alarmico)
+                .setOngoing(true)
                 //.addAction(R.drawable.warning, ticker, pendingIntent)
                 .build();
         nm.notify(notificationID, noti);

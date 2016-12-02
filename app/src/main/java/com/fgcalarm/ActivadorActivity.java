@@ -113,6 +113,7 @@ public class ActivadorActivity extends AppCompatActivity {
                     return;
                 }
                 locationManager.removeProximityAlert(pendingIntent);
+                finish();
             }
         });
 
