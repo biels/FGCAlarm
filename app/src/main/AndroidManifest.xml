@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fgcalarm">
+    package="com.fgcalarm2">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -12,9 +12,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity"
+        <activity android:name="com.fgcalarm2.MainActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".SplashScreen"
+        <activity android:name="com.fgcalarm2.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,26 +23,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SelectorEstacio"
+            android:name="com.fgcalarm2.SelectorEstacio"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivadorActivity"
+            android:name="com.fgcalarm2.ActivadorActivity"
             android:screenOrientation="portrait" />
 
         <service
-            android:name=".VibrateService"
+            android:name="com.fgcalarm2.VibrateService"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".IntroActivity"
+            android:name="com.fgcalarm2.IntroActivity"
             android:screenOrientation="portrait">
 
     </activity>
-        <activity android:name=".ProxAlertActivity"
+        <activity android:name="com.fgcalarm2.ProxAlertActivity"
             android:screenOrientation="portrait"/>
 
         <receiver
-            android:name=".ProximityIntentReceiver"
+            android:name="com.fgcalarm2.ProximityIntentReceiver"
             android:enabled="true"
             android:exported="true"></receiver><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
