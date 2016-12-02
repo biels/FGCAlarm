@@ -117,25 +117,29 @@ public class ActivadorActivity extends AppCompatActivity {
         });
 
 
+        displayNotification();
+
+
+    }
+
+    private void displayNotification() {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.fgcalarmlogo)
                         .setContentTitle(station.getName())
                         .setContentText(station.getName())
-                        .setContentIntent(pendingIntentNot);
+                        .setContentIntent(pendingIntentNot)
+                        .setOngoing(true);
 
 
         // Sets an ID for the notification
-        int mNotificationId = 001;
+        int mNotificationId = 1;
         // Gets an instance of the NotificationManager service
         NotificationManager mNotifyMgr =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // Builds the notification and issues it.
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
-
-
     }
-
 
 
     @Override
@@ -160,21 +164,7 @@ public class ActivadorActivity extends AppCompatActivity {
                     }
                     locationManager.addProximityAlert(latitud, longitud, radius, expiration, pendingIntent);
 
-                    NotificationCompat.Builder mBuilder =
-                            new NotificationCompat.Builder(this)
-                                    .setSmallIcon(R.drawable.fgcalarmlogo)
-                                    .setContentTitle(station.getName())
-                                    .setContentText(station.getName())
-                                    .setContentIntent(pendingIntentNot);
-
-
-                    // Sets an ID for the notification
-                    int mNotificationId = 001;
-                    // Gets an instance of the NotificationManager service
-                    NotificationManager mNotifyMgr =
-                            (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                    // Builds the notification and issues it.
-                    mNotifyMgr.notify(mNotificationId, mBuilder.build());
+                    displayNotification();
 
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
