@@ -35,8 +35,6 @@ public class CustomAdapterSelector extends RecyclerView.Adapter<CustomAdapterSel
         intent = new Intent(ctx, ProxAlertActivity.class);
         linia_id_p = linia_id;
 
-        RepositoryManager.attatchImplementation(RepositoryManager.ImplementationType.IN_MEMORY);
-        ProvisioningManager.provisionModel(ProvisioningManager.ProvisioningStrategy.HARDCODED);
 
         stations = new ArrayList<>();
         Line line = RepositoryManager.getLineRepository().findAll().get(linia_id);

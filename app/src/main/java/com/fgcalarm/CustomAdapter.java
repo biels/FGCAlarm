@@ -37,8 +37,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterVie
 
         lines = new ArrayList<>();
 
-        RepositoryManager.attatchImplementation(RepositoryManager.ImplementationType.IN_MEMORY);
-        ProvisioningManager.provisionModel(ProvisioningManager.ProvisioningStrategy.HARDCODED);
 
 
         for (int i = 0; i < RepositoryManager.getLineRepository().findAll().size(); i++) {
